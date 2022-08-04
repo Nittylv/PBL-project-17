@@ -1,27 +1,25 @@
 variable "region" {
-  type = string
-  description = "The region to deploy resources"
+  default = "us-east-1"
 }
 
 variable "vpc_cidr" {
-  type = string
-  description = "The VPC cidr"
+  default = "10.0.0.0/16"
 }
 
 variable "enable_dns_support" {
-  type = bool
+  default = "true"
 }
 
 variable "enable_dns_hostnames" {
-  dtype = bool
+  default = "true"
 }
 
 variable "enable_classiclink" {
-  type = bool
+  default = "false"
 }
 
 variable "enable_classiclink_dns_support" {
-  type = bool
+  default = "false"
 }
 
 variable "preferred_number_of_public_subnets" {
@@ -34,16 +32,15 @@ variable "preferred_number_of_private_subnets" {
   description = "Number of private subnets"
 }
 
-variable "name" {
-  type    = string
-  default = "ACS"
-
-}
-
 variable "tags" {
   description = "A mapping of tags to assign to all resources."
   type        = map(string)
   default     = {}
+}
+
+variable "name" {
+  type    = string
+  default = "ACS"
 }
 
 
@@ -52,17 +49,15 @@ variable "ami" {
   description = "AMI ID for the launch template"
 }
 
-
 variable "keypair" {
   type        = string
   description = "key pair for the instances"
 }
 
-variable "account_no" {
-  type        = number
-  description = "the account number"
-}
-
+# variable "account_no" {
+#   type        = number
+#   description = "the account number"
+# }
 
 variable "master-username" {
   type        = string
