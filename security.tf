@@ -1,4 +1,4 @@
-# security group for alb, to allow acess from any where for HTTP and HTTPS traffic
+# security group for alb, to allow access from any where for HTTP and HTTPS traffic
 resource "aws_security_group" "ext-alb-sg" {
   name        = "ext-alb-sg"
   vpc_id      = aws_vpc.main.id
@@ -36,7 +36,6 @@ resource "aws_security_group" "ext-alb-sg" {
 
 }
 
-
 # security group for bastion, to allow access into the bastion host from you IP
 resource "aws_security_group" "bastion_sg" {
   name        = "vpc_web_sg"
@@ -65,8 +64,6 @@ resource "aws_security_group" "bastion_sg" {
     },
   )
 }
-
-
 
 #security group for nginx reverse proxy, to allow access only from the extaernal load balancer and bastion instance
 resource "aws_security_group" "nginx-sg" {
@@ -106,7 +103,6 @@ resource "aws_security_group_rule" "inbound-bastion-ssh" {
   security_group_id        = aws_security_group.nginx-sg.id
 }
 
-
 # security group for ialb, to have acces only from nginx reverser proxy server
 resource "aws_security_group" "int-alb-sg" {
   name   = "my-alb-sg"
@@ -137,7 +133,6 @@ resource "aws_security_group_rule" "inbound-ialb-https" {
   security_group_id        = aws_security_group.int-alb-sg.id
 }
 
- 
 # security group for webservers, to have access only from the internal load balancer and bastion instance
 resource "aws_security_group" "webserver-sg" {
   name   = "my-asg-sg"
@@ -176,7 +171,6 @@ resource "aws_security_group_rule" "inbound-web-ssh" {
   source_security_group_id = aws_security_group.bastion_sg.id
   security_group_id        = aws_security_group.webserver-sg.id
 }
-
 
 # security group for datalayer to alow traffic from websever on nfs and mysql port and bastiopn host on mysql port
 resource "aws_security_group" "datalayer-sg" {
