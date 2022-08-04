@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ec2_instance_role" {
-  name = "ec2_instance_role"
+name = "ec2_instance_role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -13,6 +13,7 @@ resource "aws_iam_role" "ec2_instance_role" {
       },
     ]
   })
+
   tags = merge(
     var.tags,
     {
@@ -44,16 +45,17 @@ resource "aws_iam_policy" "policy" {
       Name =  "aws assume policy"
     },
   )
+
 }
 
 resource "aws_iam_role_policy_attachment" "test-attach" {
-  role       = aws_iam_role.ec2_instance_role.name
-  policy_arn = aws_iam_policy.policy.arn
-}
+        role       = aws_iam_role.ec2_instance_role.name
+        policy_arn = aws_iam_policy.policy.arn
+    }
 
 resource "aws_iam_instance_profile" "ip" {
-  name = "aws_instance_profile_test"
-  role = aws_iam_role.ec2_instance_role.name
-}
+        name = "aws_instance_profile_test"
+        role =  aws_iam_role.ec2_instance_role.name
+    }
 
 
