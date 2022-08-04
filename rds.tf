@@ -1,9 +1,9 @@
-# create DB subnet group from the private subnets
+# This section will create the subnet group for the RDS  instance using the private subnet
 resource "aws_db_subnet_group" "ACS-rds" {
   name       = "acs-rds"
   subnet_ids = [aws_subnet.private[2].id, aws_subnet.private[3].id]
 
-   tags = merge(
+ tags = merge(
     var.tags,
     {
       Name = "ACS-rds"
@@ -18,7 +18,7 @@ resource "aws_db_instance" "ACS-rds" {
   engine                 = "mysql"
   engine_version         = "5.7"
   instance_class         = "db.t2.micro"
-  name                   = "daviddb"
+  name                   = "bennydb"
   username               = var.master-username
   password               = var.master-password
   parameter_group_name   = "default.mysql5.7"
