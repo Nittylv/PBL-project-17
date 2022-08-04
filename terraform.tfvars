@@ -14,22 +14,20 @@ preferred_number_of_public_subnets = 2
 
 preferred_number_of_private_subnets = 4
 
-environment = "dev"
-
-ami = "ami-09e67e426f25ce0d7"
-
-keypair = "devops"
-
-master-password = "devopspblproject"
-
-master-username = "david"
-
-# Ensure to this change to your accounbt number
-account_no = "123456789"
-
 tags = {
   Enviroment      = "production" 
-  Owner-Email     = "infradev-segun@darey.io"
+  Owner-Email     = "benita201987@gmail.com"
   Managed-By      = "Terraform"
-  Billing-Account = "1234567890"
+  Billing-Account = "032051391204"
 }
+
+ami = "ami-08d4ac5b634553e16"
+
+keypair = "project16"
+
+master-username = "benny"
+
+master-password = "bennypbl"
+
+# account_no = "032051391204"
+
